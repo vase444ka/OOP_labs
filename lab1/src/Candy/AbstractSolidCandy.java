@@ -3,6 +3,13 @@ package Candy;
 public abstract class AbstractSolidCandy implements CandyItem{
     private int _weight, _sugar_weight, _calories, _price;
 
+    public AbstractSolidCandy(int weight, int sugar_weight, int calories, int price){
+        _weight = weight;
+        _sugar_weight = sugar_weight;
+        _calories = calories;
+        _price = price;
+    }
+
     @Override
     public int getWeight(){ return _weight;}
 
