@@ -1,6 +1,6 @@
-package Gift;
+package gift;
 
-import Candy.CandyItem;
+import candy.CandyItem;
 
 import java.util.Comparator;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package Candy.Details;
+package candy.details;
 
 public enum ChocolateSort {
     WHITE, MILK, BLACK

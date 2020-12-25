@@ -1,4 +1,4 @@
-package Candy;
+package candy;
 
 public interface CandyItem {
     int getPrice();//cents
