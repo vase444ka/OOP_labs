@@ -1,7 +1,6 @@
 package Gift;
 
 import Candy.CandyItem;
-import Packaging.CandyWrapper;
 
 import java.util.Comparator;
 import java.util.LinkedList;

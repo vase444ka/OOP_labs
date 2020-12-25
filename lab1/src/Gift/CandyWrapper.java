@@ -1,4 +1,4 @@
-package Packaging;
+package Gift;
 
 public class CandyWrapper {
     private Material _material;

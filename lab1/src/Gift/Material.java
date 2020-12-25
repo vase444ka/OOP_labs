@@ -1,4 +1,4 @@
-package Packaging;
+package Gift;
 
 public enum Material {
     PAPER(2),
