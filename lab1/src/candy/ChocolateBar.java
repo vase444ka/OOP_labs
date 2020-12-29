@@ -7,8 +7,8 @@ public class ChocolateBar extends AbstractSolidCandy{
     private Flavour topping;
 
     public ChocolateBar(int weight, int sugar_weight, int calories, int price, ChocolateSort choco, Flavour topping) {
+        super(weight, sugar_weight, calories, price);
         this.chocoSort = choco;
         this.topping = topping;
-        init(weight, sugar_weight, calories, price);
     }
 }

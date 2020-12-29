@@ -8,8 +8,8 @@ public class Waffle extends AbstractSolidCandy{
 
 
     public Waffle(int weight, int sugar_weight, int calories, int price, Flavour topping, Flavour flavour) {
+        super(weight, sugar_weight, calories, price);
         this.topping = topping;
         this.flavour = flavour;
-        init(weight, sugar_weight, calories, price);
     }
 }

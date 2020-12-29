@@ -1,23 +1,23 @@
 package gift;
 
 public class CandyWrapper {
-    private Material _material;
-    private double _complexity_multiplier;
+    private Material material;
+    private double complexityMultiplier;
 
     public CandyWrapper(){
-        _material = Material.NONE;
-        _complexity_multiplier = 1;
+        material = Material.NONE;
+        complexityMultiplier = 1;
     }
 
     public CandyWrapper(Material material, double complexity) throws IllegalArgumentException{
         if (complexity < 1){
             throw new IllegalArgumentException();
         }
-        _material = material;
-        _complexity_multiplier = complexity;
+        this.material = material;
+        complexityMultiplier = complexity;
     }
 
     public int countPrice(int wrappedItemWeight){
-        return (int) Math.ceil(_material.getCostPerGram()*wrappedItemWeight*_complexity_multiplier);
+        return (int) Math.ceil(material.getCostPerGram()*wrappedItemWeight* complexityMultiplier);
     }
 }

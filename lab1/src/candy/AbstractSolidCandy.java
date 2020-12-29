@@ -3,7 +3,7 @@ package candy;
 public abstract class AbstractSolidCandy implements CandyItem{
     private int weight, sugarWeight, calories, price;
 
-    protected void init(int weight, int sugar_weight, int calories, int price){
+    public AbstractSolidCandy(int weight, int sugar_weight, int calories, int price){
         this.weight = weight;
         this.sugarWeight = sugar_weight;
         this.calories = calories;

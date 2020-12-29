@@ -3,7 +3,7 @@ package candy;
 public abstract class AbstractWeighedCandy implements CandyItem{
     private int weight, sugarPercentage, caloriesPer100Gramm, pricePer100Gramm;
 
-    protected void init(int weight, int sugar, int ccal, int price){
+    public AbstractWeighedCandy(int weight, int sugar, int ccal, int price){
         this.weight = weight;
         this.sugarPercentage = sugar;
         this.caloriesPer100Gramm = ccal;

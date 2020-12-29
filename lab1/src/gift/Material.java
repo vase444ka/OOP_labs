@@ -7,11 +7,11 @@ public enum Material {
     POLYMER(1),
     FOIL(2),
     NONE(0);
-    private int _cost_per_gram;//cents
+    private int costPerGram;//cents
 
     Material(int cost) {
-        _cost_per_gram = cost;
+        costPerGram = cost;
     }
 
-    int getCostPerGram(){return _cost_per_gram;}
+    int getCostPerGram(){return costPerGram;}
 }
