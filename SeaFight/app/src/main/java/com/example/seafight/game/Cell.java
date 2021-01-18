@@ -26,17 +26,24 @@ public class Cell {
             this.ship.hitUnit(this.unitNo);
             return true;
         }
+        public boolean get(){
+            return ship.getUnit(unitNo);
+        }
     }
 
     boolean attacked = false;
     ShipUnit shipUnit;
 
     @Nullable
-    public ShipState getShipState(){
+    public ShipState getState(){
         if (this.shipUnit ==  null){
             return null;
         }
-        return this.shipUnit.ship.getState();
+        ShipState state = this.shipUnit.ship.getState();
+        if (state == ShipState.HIT){
+            return this.shipUnit.get() ? ShipState.HIT : ShipState.SOLID;
+        }
+        return state;
     }
 
     public boolean isAttacked() {

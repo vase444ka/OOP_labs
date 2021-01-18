@@ -11,7 +11,7 @@ public abstract class DrawingStrategy {
     public abstract void draw(Cell cell, Canvas canvas, int topLeftX, int topLeftY, int cellSize);
     protected void drawOpenCell(Cell cell, Canvas canvas, int topLeftX, int topLeftY, int cellSize){
         Paint paint = new Paint();
-        ShipState shipState = cell.getShipState();
+        ShipState shipState = cell.getState();
         if (shipState == null)
             paint.setColor(Color.CYAN);
         else{

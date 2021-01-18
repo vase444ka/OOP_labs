@@ -30,6 +30,18 @@ public class Player {
         this.drawingStrategy = drawingStrategy;
     }
 
+    public void registerGeneratorAsOpponent(MoveGenerator generator){
+        if (generator != null){
+            generator.setOpponentField(this.field);
+        }
+    }
+
+    public void registerGeneratorAsManager(MoveGenerator generator){
+        if (generator != null){
+            generator.setMyField(this.field);
+        }
+    }
+
     public void draw(Canvas canvas, Point topLeft, int width, int height){
         int cellSize = Math.min(width, height)/(Field.SIZE + 2*Field.MARGIN + 2);
 

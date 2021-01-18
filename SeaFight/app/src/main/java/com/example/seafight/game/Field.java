@@ -26,7 +26,7 @@ public class Field {
             for (int currentI = i -1; currentI <= i + 1; currentI++){
                 if ((currentI >= 0) && (currentJ >= 0) &&
                         (currentI < SIZE) && (currentJ < SIZE) &&
-                        (cell[currentI][currentJ].getShipState() != null))
+                        (cell[currentI][currentJ].getState() != null))
                     return false;
             }
         return true;

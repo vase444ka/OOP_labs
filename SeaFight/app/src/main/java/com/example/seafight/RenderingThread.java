@@ -12,7 +12,6 @@ public class RenderingThread extends Thread {
     public RenderingThread(SurfaceHolder surfaceHolder, SurfaceView view) {
         super();
         this.view = view;
-        System.out.println("---RenderingThread created---");
     }
 
     @Override

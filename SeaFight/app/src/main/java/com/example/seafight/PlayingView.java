@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,23 +14,22 @@ import com.example.seafight.game.SeaFightGame;
 
 import org.jetbrains.annotations.Nullable;
 
-public class GameView extends SurfaceView implements android.view.SurfaceHolder.Callback {
+public class PlayingView extends SurfaceView implements android.view.SurfaceHolder.Callback {
     private RenderingThread thread;
     private SeaFightGame gameInstance;
     private Point humanTopLeft, computerTopLeft;
     private int playerViewHeight, playerViewWidth;
 
-    public GameView(Context context) {
+    public PlayingView(Context context) {
         super(context);
     }
 
-    public GameView(Context context, @Nullable AttributeSet attrs){
+    public PlayingView(Context context, @Nullable AttributeSet attrs){
         super(context, attrs);
-        System.out.println("--gameView constructor---");
     }
 
-    public GameView(Context context, @Nullable AttributeSet attrs,
-                    int defStyleAttr) {
+    public PlayingView(Context context, @Nullable AttributeSet attrs,
+                       int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -38,12 +38,10 @@ public class GameView extends SurfaceView implements android.view.SurfaceHolder.
         super.onAttachedToWindow();
         getHolder().addCallback(this);
         setFocusable(true);
-        System.out.println("---gameview attached to window---");
     }
 
     public void setGameInstance(SeaFightGame gameInstance) {
         this.gameInstance = gameInstance;
-        System.out.println("---game instance set to view---");
     }
 
     @Override
@@ -51,7 +49,6 @@ public class GameView extends SurfaceView implements android.view.SurfaceHolder.
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        System.out.println("---gameView surface created---");
         playerViewHeight = this.getHolder().getSurfaceFrame().height()/2;
         playerViewWidth = this.getHolder().getSurfaceFrame().width();
         humanTopLeft = new Point(0, 0);
@@ -107,13 +104,13 @@ public class GameView extends SurfaceView implements android.view.SurfaceHolder.
         if (i < 0 || j < 0 || i >= Field.SIZE || j >= Field.SIZE){
             return true;
         }
-        System.out.println("---" + i + "---" + j + "---");
         if (!gameInstance.computer.isAttacked(i, j)){
-            int generated_i, generated_j;
-            //generation goes here
-            //while(gameInstance.human.attacked(generated_i, generated_j)){
-                //some more generation
-            //}
+            System.out.println("---human lost an attack---");
+            Pair<Integer, Integer> computerMove = gameInstance.moveGenerator.generateAttack();
+            while(gameInstance.human.isAttacked(computerMove.first, computerMove.second)){
+                computerMove = gameInstance.moveGenerator.generateAttack();
+                System.out.println("---computer attacks---");
+            }
         }
 
 

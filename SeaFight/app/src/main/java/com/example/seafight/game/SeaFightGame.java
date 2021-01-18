@@ -10,11 +10,15 @@ import java.util.ArrayList;
 
 public class SeaFightGame {
     public Player human, computer;
+    public MoveGenerator moveGenerator;
 
     public SeaFightGame(){
         human = new Player();
         human.setDrawingStrategy(new OpenDrawingStrategy());
         computer = new Player();
         computer.setDrawingStrategy(new ClosedDrawingStrategy());
+        moveGenerator = new MoveGenerator();
+        human.registerGeneratorAsManager(moveGenerator);
+        computer.registerGeneratorAsManager(moveGenerator);
     }
 }

@@ -1,10 +1,8 @@
 package com.example.seafight;
 
 import android.app.Activity;
-import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -31,8 +29,8 @@ public class MainActivity extends Activity {
     public boolean onTouchEvent(MotionEvent ev){
         if (gameInstance.human.isReady()){
             setContentView(R.layout.active_game_layout);
-            GameView gameView = findViewById(R.id.activeGameView);
-            gameView.setGameInstance(gameInstance);
+            PlayingView playingView = findViewById(R.id.activeGameView);
+            playingView.setGameInstance(gameInstance);
         }
         return true;
     }
