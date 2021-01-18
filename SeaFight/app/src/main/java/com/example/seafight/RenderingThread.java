@@ -2,15 +2,16 @@ package com.example.seafight;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 public class RenderingThread extends Thread {
-    private GameView gameView;//this is really bad for a simple view. What about SurfaceView?
+    private SurfaceView view;//this is really bad for a simple view. What about SurfaceView?
     private boolean running;
     public static Canvas canvas;//wondering why is this static
 
-    public RenderingThread(SurfaceHolder surfaceHolder, GameView gameView) {
+    public RenderingThread(SurfaceHolder surfaceHolder, SurfaceView view) {
         super();
-        this.gameView = gameView;
+        this.view = view;
         System.out.println("---RenderingThread created---");
     }
 
@@ -18,16 +19,16 @@ public class RenderingThread extends Thread {
     public void run() {
         while (running) {
             canvas = null;
-            canvas = gameView.getHolder().lockCanvas();
+            canvas = view.getHolder().lockCanvas();
             try {
                 synchronized (this) {
-                    this.gameView.draw(canvas);
+                    this.view.draw(canvas);
                 }
             } catch (Exception e) {
             } finally {
                 if (canvas != null) {
                     try {
-                        gameView.getHolder().unlockCanvasAndPost(canvas);
+                        view.getHolder().unlockCanvasAndPost(canvas);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

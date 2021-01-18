@@ -15,6 +15,7 @@ import java.util.Collections;
 public class Player {
     Field field = new Field();
     ArrayList <Ship> ship;
+    DrawingStrategy drawingStrategy;
 
     public Player(){
         ship = new ArrayList<>();
@@ -22,6 +23,10 @@ public class Player {
             int amount = Ship.MAX_LENGTH + 1 - len;
             ship.addAll(Collections.nCopies(amount, new Ship(len)));
         }
+    }
+
+    public void setDrawingStrategy(DrawingStrategy drawingStrategy) {
+        this.drawingStrategy = drawingStrategy;
     }
 
     public void draw(Canvas canvas, Point topLeft, int width, int height){
@@ -35,16 +40,17 @@ public class Player {
         for (int i = 0; i < Field.SIZE; i++){
             int x = topLeft.x + width/2 - cellSize*Field.SIZE/2;
             for (int j = 0; j < Field.SIZE; j++) {
-                paint.setColor(Color.rgb(25 * i, 0, 255 - 25 * j));
-                canvas.drawRect(x, y,x + cellSize, y + cellSize, paint);
+                if (drawingStrategy != null) {
+                    drawingStrategy.draw(field.getCell(i, j), canvas, x, y, cellSize);
+                }
                 x += cellSize;
             }
             y += cellSize;
         }
-    }//TODO strategy
+    }
 
     public void buildField(){}//TODO
-    //true if player can move was hit
+    //true if player was hit
     public boolean attacked(int i, int j){
         if ((i < 0) || (i >= Field.SIZE) || (j < 0) || (j >= Field.SIZE)){
             throw new IllegalArgumentException("attacking inexistent cell");

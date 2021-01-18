@@ -1,8 +1,7 @@
 package com.example.seafight.game;
 
-//TODO find out if new cells are being created here
 public class Field {
-    public static final int SIZE = 10, MARGIN = 1;
+    public static final int SIZE = 10, MARGIN = 0;
     Cell[][] cell = new Cell[SIZE][SIZE];
 
     public Field(){

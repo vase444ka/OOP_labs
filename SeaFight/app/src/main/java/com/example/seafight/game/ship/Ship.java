@@ -8,6 +8,7 @@ public class Ship {
     public static final int MAX_LENGTH = 5;
 
     ArrayList <Boolean> unitIsHit;
+    private boolean positioned = false;
 
     public Ship(){
         unitIsHit = new ArrayList<>();
@@ -53,5 +54,14 @@ public class Ship {
 
     public int getLength(){
         return unitIsHit.size();
+    }
+
+
+    public boolean isPositioned() {
+        return positioned;
+    }
+
+    public void position() {
+        this.positioned = true;
     }
 }

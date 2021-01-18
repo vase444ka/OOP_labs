@@ -1,7 +1,10 @@
 package com.example.seafight;
 
 import android.app.Activity;
+import android.app.usage.UsageEvents;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -17,12 +20,20 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.active_game_layout);
-        GameView gameView = findViewById(R.id.activeGameView);
-
-
-        System.out.println("---activity::onCreate()---");
         gameInstance = new SeaFightGame();
-        gameView.setGameInstance(gameInstance);
+
+        setContentView(R.layout.field_editing_layout);
+        EditingView editingView = findViewById(R.id.editingView);
+        editingView.setPlayer(gameInstance.human);
+
+        /*setContentView(R.layout.active_game_layout);
+        GameView gameView = findViewById(R.id.activeGameView);
+        gameView.setGameInstance(gameInstance);*/
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev){
+        System.out.println("---touch dispatched---");
+        return false;
     }
 }

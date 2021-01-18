@@ -84,9 +84,9 @@ public class GameView extends SurfaceView implements android.view.SurfaceHolder.
         super.draw(canvas);
         if (canvas != null && gameInstance != null) {
             gameInstance.human.draw(canvas,
-                    humanTopLeft, canvas.getWidth(), canvas.getHeight()/2);
+                    humanTopLeft, getWidth(), getHeight()/2);
             gameInstance.computer.draw(canvas,
-                    computerTopLeft, canvas.getWidth(), canvas.getHeight()/2);
+                    computerTopLeft, getWidth(), getHeight()/2);
         }
     }
 

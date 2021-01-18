@@ -13,6 +13,8 @@ public class SeaFightGame {
 
     public SeaFightGame(){
         human = new Player();
+        human.setDrawingStrategy(new OpenDrawingStrategy());
         computer = new Player();
+        computer.setDrawingStrategy(new ClosedDrawingStrategy());
     }
 }
