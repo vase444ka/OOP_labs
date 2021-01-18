@@ -17,7 +17,6 @@ public class EditingView extends SurfaceView implements android.view.SurfaceHold
     private RenderingThread thread;
     private Player player;
     private int startI, startJ;
-    private int positionedShips = 0;
 
     public EditingView(Context context) {
         super(context);
@@ -103,9 +102,16 @@ public class EditingView extends SurfaceView implements android.view.SurfaceHold
         if (event.getAction() == MotionEvent.ACTION_UP){
             int endI = (int) (event.getY() - fieldTopLeft.y)/cellSize;
             int endJ = (int) (event.getX() - fieldTopLeft.x)/cellSize;
-            return false;
-
+            if (startI == endI){
+                player.placeShip(startI, Math.min(endJ, startJ), Math.abs(endJ - startJ) + 1, false);
+            }
+            else if (startJ == endJ){
+                player.placeShip(Math.min(startI, endI), startJ, Math.abs(endI - startI) + 1, true);
+            }
         }
-        return true;
+        if (player.isReady()){
+            System.out.println("---all ships positioned---");
+        }
+        return !player.isReady();
     }//when positionedShips == player.shipsN, changeView
 }

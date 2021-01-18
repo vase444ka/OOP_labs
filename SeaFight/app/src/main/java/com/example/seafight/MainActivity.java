@@ -25,15 +25,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.field_editing_layout);
         EditingView editingView = findViewById(R.id.editingView);
         editingView.setPlayer(gameInstance.human);
-
-        /*setContentView(R.layout.active_game_layout);
-        GameView gameView = findViewById(R.id.activeGameView);
-        gameView.setGameInstance(gameInstance);*/
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev){
-        System.out.println("---touch dispatched---");
-        return false;
+    public boolean onTouchEvent(MotionEvent ev){
+        if (gameInstance.human.isReady()){
+            setContentView(R.layout.active_game_layout);
+            GameView gameView = findViewById(R.id.activeGameView);
+            gameView.setGameInstance(gameInstance);
+        }
+        return true;
     }
 }

@@ -44,11 +44,14 @@ public class Cell {
     }
 
     public boolean attack() {
-        if (this.attacked || this.shipUnit == null){
+        if (this.attacked){
             return false;
         }
         this.attacked = true;
-        return this.shipUnit.attack();
+        if (this.shipUnit != null)
+            return this.shipUnit.attack();
+        else
+            return false;
     }
 
     public void setShipUnit(@NotNull Ship ship, int unitNo) {

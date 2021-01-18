@@ -3,17 +3,13 @@ package com.example.seafight;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import androidx.annotation.RequiresApi;
-
 import com.example.seafight.game.Field;
 import com.example.seafight.game.SeaFightGame;
-import com.example.seafight.game.player.*;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -112,13 +108,14 @@ public class GameView extends SurfaceView implements android.view.SurfaceHolder.
             return true;
         }
         System.out.println("---" + i + "---" + j + "---");
-        if (!gameInstance.computer.attacked(i, j)){
+        if (!gameInstance.computer.isAttacked(i, j)){
             int generated_i, generated_j;
             //generation goes here
             //while(gameInstance.human.attacked(generated_i, generated_j)){
                 //some more generation
             //}
         }
+
 
         return true;
     }

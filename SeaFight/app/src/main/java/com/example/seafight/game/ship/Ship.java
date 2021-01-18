@@ -56,7 +56,6 @@ public class Ship {
         return unitIsHit.size();
     }
 
-
     public boolean isPositioned() {
         return positioned;
     }

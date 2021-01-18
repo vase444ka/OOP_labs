@@ -15,13 +15,14 @@ import java.util.Collections;
 public class Player {
     Field field = new Field();
     ArrayList <Ship> ship;
+    int placedShips;
     DrawingStrategy drawingStrategy;
 
     public Player(){
         ship = new ArrayList<>();
         for (int len = Ship.MIN_LENGTH; len <= Ship.MAX_LENGTH; len++){
-            int amount = Ship.MAX_LENGTH + 1 - len;
-            ship.addAll(Collections.nCopies(amount, new Ship(len)));
+            for (int count = 0; count < Ship.MAX_LENGTH + 1 - len; count ++)
+                ship.add(new Ship(len));
         }
     }
 
@@ -49,16 +50,62 @@ public class Player {
         }
     }
 
-    public void buildField(){}//TODO
+    public boolean placeShip(int startI, int startJ, int shipLength, boolean isVertical){
+        if ((startI < 0) || (startI >= Field.SIZE) ||
+                (startJ < 0) || (startJ >= Field.SIZE) ||
+                (shipLength < Ship.MIN_LENGTH) || (shipLength > Ship.MAX_LENGTH)){
+            throw new IllegalArgumentException();
+        }
+        for (int step = 0; step < shipLength; step++){
+            int currentI = startI, currentJ = startJ;
+            if (isVertical){
+                currentI += step;
+            }
+            else{
+                currentJ += step;
+            }
+            if (!field.isShipAllowed(currentI, currentJ)){
+                return false;
+            }
+        }
+        Ship placedShip = null;
+        for (Ship it: ship){
+            if (!(it.isPositioned()) && (it.getLength() == shipLength)){
+                placedShip = it;
+            }
+        }
+        if (placedShip == null){
+            System.out.println("---no ship of size " + shipLength + " found---");
+            return false;
+        }
+        for (int step = 0; step < shipLength; step++){
+            int currentI = startI, currentJ = startJ;
+            if (isVertical){
+                currentI += step;
+            }
+            else{
+                currentJ += step;
+            }
+            field.getCell(currentI, currentJ).setShipUnit(placedShip, step);
+        }
+        placedShip.position();
+        placedShips++;
+        return true;
+    }
+
     //true if player was hit
-    public boolean attacked(int i, int j){
+    public boolean isAttacked(int i, int j){
         if ((i < 0) || (i >= Field.SIZE) || (j < 0) || (j >= Field.SIZE)){
             throw new IllegalArgumentException("attacking inexistent cell");
         }
         return field.getCell(i, j).attack();
     }
 
-    public boolean checkLose(){
+    public boolean isReady(){
+        return (placedShips == ship.size());
+    }
+
+    public boolean isLost(){
         for (Ship shipIterator: ship){
             if (shipIterator.getState() != ShipState.KILLED)
                 return false;
