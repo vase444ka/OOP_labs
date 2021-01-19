@@ -1,7 +1,7 @@
-package candy;
+package main.candy;
 
-import candy.details.ChocolateSort;
-import candy.details.Flavour;
+import main.candy.details.ChocolateSort;
+import main.candy.details.Flavour;
 
 public class ChocolateSweets extends AbstractSweets{
     private ChocolateSort chocolateSort;

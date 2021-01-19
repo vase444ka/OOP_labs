@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <com.example.seafight.PlayingView
+    <com.example.seafight.custom_view.PlayingView
         android:id="@+id/activeGameView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

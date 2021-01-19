@@ -1,6 +1,6 @@
-package candy;
+package main.candy;
 
-import candy.details.*;
+import main.candy.details.*;
 
 public abstract class AbstractSweets extends AbstractWeighedCandy{
     private Flavour topping;

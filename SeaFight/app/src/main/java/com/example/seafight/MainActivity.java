@@ -6,6 +6,8 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.seafight.custom_view.EditingView;
+import com.example.seafight.custom_view.PlayingView;
 import com.example.seafight.game.SeaFightGame;
 
 public class MainActivity extends Activity {
@@ -27,6 +29,13 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev){
+        if (gameInstance.human.isLost()){
+            setContentView(R.layout.computer_win_layout);
+            return true;
+        }
+        if (gameInstance.computer.isLost()){
+            setContentView(R.layout.human_win_layout);
+        }
         if (gameInstance.human.isReady()){
             setContentView(R.layout.active_game_layout);
             PlayingView playingView = findViewById(R.id.activeGameView);

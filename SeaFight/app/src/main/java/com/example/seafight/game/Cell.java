@@ -6,8 +6,6 @@ import com.example.seafight.game.ship.ShipState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-
-//TODO restrict user from placing shipUnits randomly
 public class Cell {
     private static class ShipUnit{
         Ship ship;

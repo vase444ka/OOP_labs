@@ -1,4 +1,4 @@
-package candy;
+package main.candy;
 
 public abstract class AbstractWeighedCandy implements CandyItem{
     private int weight, sugarPercentage, caloriesPer100Gramm, pricePer100Gramm;

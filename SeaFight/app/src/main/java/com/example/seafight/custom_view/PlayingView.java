@@ -1,4 +1,4 @@
-package com.example.seafight;
+package com.example.seafight.custom_view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -108,9 +108,15 @@ public class PlayingView extends SurfaceView implements android.view.SurfaceHold
             System.out.println("---human lost an attack---");
             Pair<Integer, Integer> computerMove = gameInstance.moveGenerator.generateAttack();
             while(gameInstance.human.isAttacked(computerMove.first, computerMove.second)){
+                if (gameInstance.human.isLost())
+                    return false;
                 computerMove = gameInstance.moveGenerator.generateAttack();
                 System.out.println("---computer attacks---");
             }
+        }
+        else{
+            if (gameInstance.computer.isLost())
+                return false;
         }
 
 

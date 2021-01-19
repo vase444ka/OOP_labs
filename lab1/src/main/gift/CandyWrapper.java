@@ -1,4 +1,4 @@
-package gift;
+package main.gift;
 
 public class CandyWrapper {
     private Material material;

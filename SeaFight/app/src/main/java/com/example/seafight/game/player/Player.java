@@ -64,8 +64,7 @@ public class Player {
 
     public boolean placeShip(int startI, int startJ, int shipLength, boolean isVertical){
         if ((startI < 0) || (startI >= Field.SIZE) ||
-                (startJ < 0) || (startJ >= Field.SIZE) ||
-                (shipLength < Ship.MIN_LENGTH) || (shipLength > Ship.MAX_LENGTH)){
+                (startJ < 0) || (startJ >= Field.SIZE)){
             throw new IllegalArgumentException();
         }
         for (int step = 0; step < shipLength; step++){

@@ -1,4 +1,4 @@
-package com.example.seafight;
+package com.example.seafight.custom_view;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;

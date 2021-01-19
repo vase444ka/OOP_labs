@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <com.example.seafight.EditingView
+    <com.example.seafight.custom_view.EditingView
         android:id="@+id/editingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

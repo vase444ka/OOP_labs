@@ -1,6 +1,6 @@
-package candy.comparators;
+package main.candy.comparators;
 
-import candy.CandyItem;
+import main.candy.CandyItem;
 
 import java.util.Comparator;
 

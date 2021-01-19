@@ -1,4 +1,4 @@
-package candy;
+package main.candy;
 
 public abstract class AbstractSolidCandy implements CandyItem{
     private int weight, sugarWeight, calories, price;

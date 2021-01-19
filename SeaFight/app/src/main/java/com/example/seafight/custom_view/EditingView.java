@@ -1,4 +1,4 @@
-package com.example.seafight;
+package com.example.seafight.custom_view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -88,12 +88,6 @@ public class EditingView extends SurfaceView implements android.view.SurfaceHold
         Point fieldTopLeft = new Point
                 (getWidth()/2 - cellSize*Field.SIZE/2,
                         getHeight()/2 - cellSize*Field.SIZE/2);
-        if (((int) (event.getY() - fieldTopLeft.y)/cellSize < 0) ||
-                ((int) (event.getX() - fieldTopLeft.x)/cellSize < 0) ||
-                ((int) (event.getY() - fieldTopLeft.y)/cellSize >= Field.SIZE) ||
-                ((int) (event.getX() - fieldTopLeft.x)/cellSize >= Field.SIZE)){
-            return true;
-        }
 
         if (event.getAction() == MotionEvent.ACTION_DOWN){
             this.startI = (int) (event.getY() - fieldTopLeft.y)/cellSize;
@@ -102,15 +96,19 @@ public class EditingView extends SurfaceView implements android.view.SurfaceHold
         if (event.getAction() == MotionEvent.ACTION_UP){
             int endI = (int) (event.getY() - fieldTopLeft.y)/cellSize;
             int endJ = (int) (event.getX() - fieldTopLeft.x)/cellSize;
+            if ((startI < 0) || (startJ < 0) ||
+                    (startI >= Field.SIZE) || (startJ >= Field.SIZE) ||
+                    (endI < 0) || (endJ < 0) ||
+                    (endI >= Field.SIZE) || (endJ >= Field.SIZE)){
+                return true;
+            }
+
             if (startI == endI){
                 player.placeShip(startI, Math.min(endJ, startJ), Math.abs(endJ - startJ) + 1, false);
             }
             else if (startJ == endJ){
                 player.placeShip(Math.min(startI, endI), startJ, Math.abs(endI - startI) + 1, true);
             }
-        }
-        if (player.isReady()){
-            System.out.println("---all ships positioned---");
         }
         return !player.isReady();
     }//when positionedShips == player.shipsN, changeView

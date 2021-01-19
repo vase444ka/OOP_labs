@@ -1,12 +1,12 @@
-package candy;
+package main.candy;
 
-import candy.details.*;
+import main.candy.details.*;
 
 public class Cookie extends AbstractWeighedCandy{
     private Flavour topping;
 
     public Cookie(int weight, int sugar, int ccal, int price, Flavour topping){
+        super(weight, sugar, ccal, price);
         this.topping = topping;
-        super.init(weight, sugar, ccal, price);
     }
 }

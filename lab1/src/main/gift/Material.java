@@ -1,4 +1,4 @@
-package gift;
+package main.gift;
 
 public enum Material {
     PAPER(2),
