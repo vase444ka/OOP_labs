@@ -13,5 +13,5 @@ public enum Material {
         costPerGram = cost;
     }
 
-    int getCostPerGram(){return costPerGram;}
+    public int getCostPerGram(){return costPerGram;}
 }

@@ -1,7 +1,10 @@
 package test.gift;
 
 import main.candy.*;
+import main.candy.comparators.CaloriesComparator;
 import main.candy.comparators.PriceComparator;
+import main.candy.comparators.SugarComparator;
+import main.candy.comparators.WeightComparator;
 import main.candy.details.ChocolateSort;
 import main.candy.details.Flavour;
 import main.gift.CandyWrapper;
@@ -84,5 +87,14 @@ public class SweetGiftTest {
         gift.sortItemsBy(new PriceComparator());
         List <CandyItem> giftItems = gift.getItems();
         Assertions.assertEquals(giftItems.get(0).getPrice(), 5);
+        gift.sortItemsBy(new SugarComparator());
+        giftItems = gift.getItems();
+        Assertions.assertEquals(giftItems.get(0).getSugarWeight(), 5);
+        gift.sortItemsBy(new WeightComparator());
+        giftItems = gift.getItems();
+        Assertions.assertEquals(giftItems.get(0).getWeight(), 35);
+        gift.sortItemsBy(new CaloriesComparator());
+        giftItems = gift.getItems();
+        Assertions.assertEquals(giftItems.get(0).getCalories(), (int)Math.ceil(20 * 35 /100.0));
     }
 }
